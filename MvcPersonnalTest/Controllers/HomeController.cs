@@ -16,5 +16,10 @@ namespace MvcPersonnalTest.Views.Home
             return View();
         }
 
+        public ActionResult SecondPage()
+        {
+            return View();
+        }
+
     }
 }
