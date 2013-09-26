@@ -1,0 +1,23 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<h2>
+    Razor Controls
+</h2>
+@using (Html.BeginForm("Submit"))
+{
+    @Html.DropDownList("TestList") <br /><br />
+    @Html.TextBox("TextBox", "", new { @onclick = "alert();", @myNewAttribute = "5" }) <br /><br />
+    @Html.CheckBox("stringname", true) <br /><br />
+    
+    <label>
+        @Html.RadioButton("stringname", 10, true) 10
+    </label>
+    <br /><br />
+    <label>
+        @Html.RadioButton("stringname", 12) 12 
+    </label>
+    <br /><br />
+    <input type="submit" class="btn btn-default" name="Submit" />
+}

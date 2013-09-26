@@ -124,6 +124,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\BootstrapController.cs" />
     <Compile Include="Controllers\JQueryController.cs" />
+    <Compile Include="Controllers\RazorController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -220,6 +221,8 @@
     <Content Include="Views\Home\SecondPage.cshtml" />
     <Content Include="Views\Bootstrap\Index.cshtml" />
     <Content Include="Views\JQuery\Index.cshtml" />
+    <Content Include="Views\Razor\Index.cshtml" />
+    <Content Include="Views\Razor\Success.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
