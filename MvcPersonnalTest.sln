@@ -5,6 +5,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvcPersonnalTest", "MvcPers
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvcPersonnalTest.Tests", "MvcPersonnalTest.Tests\MvcPersonnalTest.Tests.csproj", "{A1B80629-994A-4B98-844B-AFD9ECDA238A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvcPersonnalTest.DataModel", "MvcPersonnalTest.DataLayer\MvcPersonnalTest.DataModel.csproj", "{D98D8634-8A8F-46F4-9DE3-1CDECEB40560}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvcPersonnalTest.BusinessModel", "MvcPersonnalTest.BusinessModel\MvcPersonnalTest.BusinessModel.csproj", "{1522FB36-615D-43C5-A232-D1A50D3848BA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,6 +23,14 @@ Global
 		{A1B80629-994A-4B98-844B-AFD9ECDA238A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A1B80629-994A-4B98-844B-AFD9ECDA238A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A1B80629-994A-4B98-844B-AFD9ECDA238A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D98D8634-8A8F-46F4-9DE3-1CDECEB40560}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D98D8634-8A8F-46F4-9DE3-1CDECEB40560}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D98D8634-8A8F-46F4-9DE3-1CDECEB40560}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D98D8634-8A8F-46F4-9DE3-1CDECEB40560}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1522FB36-615D-43C5-A232-D1A50D3848BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1522FB36-615D-43C5-A232-D1A50D3848BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1522FB36-615D-43C5-A232-D1A50D3848BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1522FB36-615D-43C5-A232-D1A50D3848BA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
