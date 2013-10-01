@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Globalization;
+
 
 namespace MvcPersonnalTest.BusinessModel
 {
@@ -29,7 +27,7 @@ namespace MvcPersonnalTest.BusinessModel
             if (string.IsNullOrEmpty(word))
                 return string.Empty;
 
-            return word[0].ToString();
+            return word[0].ToString(CultureInfo.InvariantCulture);
         }
     }
 }
