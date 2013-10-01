@@ -231,6 +231,16 @@
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MvcPersonnalTest.BusinessModel\MvcPersonnalTest.BusinessModel.csproj">
+      <Project>{1522fb36-615d-43c5-a232-d1a50d3848ba}</Project>
+      <Name>MvcPersonnalTest.BusinessModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MvcPersonnalTest.BusinessServices\MvcPersonnalTest.BusinessServices.csproj">
+      <Project>{f2b08b2d-cf7c-431e-b9ec-0fbdba729b6f}</Project>
+      <Name>MvcPersonnalTest.BusinessServices</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

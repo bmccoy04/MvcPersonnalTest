@@ -22,7 +22,15 @@ namespace MvcPersonnalTest.BusinessServices
 
         public static IEnumerable<User> GetUsers(Func<User, bool> whereClause)
         {
-            return Context.Users.Where(whereClause);
+            return Context.Users.Where(whereClause);            
+        }
+
+        public static IEnumerable<User> GetAllUsers() 
+        {
+            return (from c in Context.Users.Include("Address")
+                    where c.Active
+                    select c);
+
         }
 
         public static int InsertUser(User user)
@@ -35,14 +43,14 @@ namespace MvcPersonnalTest.BusinessServices
 
         public static void UpdateUser(User user)
         {
-            if(user == null)
+            if (user == null)
                 return;
 
             var u = Context.Users.FirstOrDefault(x => x.ID == user.ID);
-            
-            if( u == null)
+
+            if (u == null)
                 return;
-            
+
             u = user;
             Context.SaveChanges();
         }

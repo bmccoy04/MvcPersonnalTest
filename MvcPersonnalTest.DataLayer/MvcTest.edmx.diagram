@@ -5,7 +5,9 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="456f91d3701943c3a383829768a383c7" Name="Diagram1">
-        <EntityTypeShape EntityType="MvcTestModel.User" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MvcTestModel.Address" Width="1.5" PointX="8.4495128302134166" PointY="28.044189659899189" />
+        <EntityTypeShape EntityType="MvcTestModel.User" Width="1.5" PointX="2.1562697599438345" PointY="27.254695219572024" />
+        <AssociationConnector Association="MvcTestModel.FK_Address_User" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

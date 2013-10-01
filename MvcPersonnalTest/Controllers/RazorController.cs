@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Web.Mvc;
+using MvcPersonnalTest.BusinessModel;
+using MvcPersonnalTest.BusinessServices;
 
 namespace MvcPersonnalTest.Controllers
 {

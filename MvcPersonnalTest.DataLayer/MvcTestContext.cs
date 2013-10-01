@@ -13,6 +13,7 @@ namespace MvcPersonnalTest.DataLayer
         public MvcTestContext()
             : base("name=MvcTestEntities", "MvcTestEntities")
         {
+            _addresses = CreateObjectSet<Address>();
             _users = CreateObjectSet<User>();
         }
 
@@ -25,6 +26,17 @@ namespace MvcPersonnalTest.DataLayer
         }
 
         private ObjectSet<User> _users;
+
+        public ObjectSet<Address> Addresses
+        {
+            get
+            {
+                return _addresses;
+            }
+        }
+
+        private ObjectSet<Address> _addresses;
+
     }
 
 

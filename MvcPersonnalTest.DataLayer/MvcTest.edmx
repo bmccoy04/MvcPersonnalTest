@@ -4,28 +4,31 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="MvcTestModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="MvcTestModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityContainer Name="MvcTestModelStoreContainer">
-          <EntitySet Name="User" EntityType="MvcTestModel.Store.User" store:Type="Tables" store:Schema="dbo" store:Name="User">
-            <DefiningQuery>SELECT 
-      [User].[ID] AS [ID], 
-      [User].[Username] AS [Username], 
-      [User].[FirstName] AS [FirstName], 
-      [User].[LastName] AS [LastName], 
-      [User].[Active] AS [Active]
-      FROM [dbo].[User] AS [User]</DefiningQuery>
-          </EntitySet>
+          <EntitySet Name="Address" EntityType="MvcTestModel.Store.Address" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="User" EntityType="MvcTestModel.Store.User" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_Address_User" Association="MvcTestModel.Store.FK_Address_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Address" EntitySet="Address" />
+          </AssociationSet>
         </EntityContainer>
-        <!--Errors Found During Generation:
-      warning 6002: The table/view 'MvcTest.dbo.User' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
-      -->
+        <EntityType Name="Address">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Street1" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Street2" Type="varchar" MaxLength="50" />
+          <Property Name="City" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="StateID" Type="int" Nullable="false" />
+          <Property Name="ZipCode" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+        </EntityType>
         <EntityType Name="User">
           <Key>
             <PropertyRef Name="ID" />
-            <PropertyRef Name="Username" />
-            <PropertyRef Name="FirstName" />
-            <PropertyRef Name="LastName" />
-            <PropertyRef Name="Active" />
           </Key>
           <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Username" Type="varchar" Nullable="false" MaxLength="50" />
@@ -33,42 +36,95 @@
           <Property Name="LastName" Type="varchar" Nullable="false" MaxLength="50" />
           <Property Name="Active" Type="bit" Nullable="false" />
         </EntityType>
-      </Schema>
-    </edmx:StorageModels>
+        <Association Name="FK_Address_User">
+          <End Role="User" Type="MvcTestModel.Store.User" Multiplicity="1" />
+          <End Role="Address" Type="MvcTestModel.Store.Address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Address">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="MvcTestModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="MvcTestEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="Addresses" EntityType="MvcTestModel.Address" />
           <EntitySet Name="Users" EntityType="MvcTestModel.User" />
+          <AssociationSet Name="FK_Address_User" Association="MvcTestModel.FK_Address_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Address" EntitySet="Addresses" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Address">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Street1" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Street2" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="City" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="StateID" Nullable="false" />
+          <Property Type="String" Name="ZipCode" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="UserID" Nullable="false" />
+          <Property Type="Boolean" Name="Active" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="MvcTestModel.FK_Address_User" FromRole="Address" ToRole="User" />
+        </EntityType>
         <EntityType Name="User">
           <Key>
             <PropertyRef Name="ID" />
-            <PropertyRef Name="Username" />
-            <PropertyRef Name="FirstName" />
-            <PropertyRef Name="LastName" />
-            <PropertyRef Name="Active" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
-          <Property Name="Username" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
-          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
-          <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
-          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Username" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="FirstName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="LastName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Boolean" Name="Active" Nullable="false" />
+          <NavigationProperty Name="Addresses" Relationship="MvcTestModel.FK_Address_User" FromRole="User" ToRole="Address" />
         </EntityType>
+        <Association Name="FK_Address_User">
+          <End Type="MvcTestModel.User" Role="User" Multiplicity="1" />
+          <End Type="MvcTestModel.Address" Role="Address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Address">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="MvcTestModelStoreContainer" CdmEntityContainer="MvcTestEntities">
+          <EntitySetMapping Name="Addresses">
+            <EntityTypeMapping TypeName="MvcTestModel.Address">
+              <MappingFragment StoreEntitySet="Address">
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+                <ScalarProperty Name="StateID" ColumnName="StateID" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Street2" ColumnName="Street2" />
+                <ScalarProperty Name="Street1" ColumnName="Street1" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Users">
             <EntityTypeMapping TypeName="MvcTestModel.User">
               <MappingFragment StoreEntitySet="User">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="Username" ColumnName="Username" />
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
                 <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
