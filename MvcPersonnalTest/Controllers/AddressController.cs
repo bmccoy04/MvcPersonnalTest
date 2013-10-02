@@ -6,10 +6,10 @@ using System.Web.Mvc;
 
 namespace MvcPersonnalTest.Controllers
 {
-    public class UserController : Controller
+    public class AddressController : Controller
     {
         //
-        // GET: /User/
+        // GET: /Address/
 
         public ActionResult Index()
         {
@@ -17,7 +17,7 @@ namespace MvcPersonnalTest.Controllers
         }
 
         //
-        // GET: /User/Details/5
+        // GET: /Address/Details/5
 
         public ActionResult Details(int id)
         {
@@ -25,16 +25,15 @@ namespace MvcPersonnalTest.Controllers
         }
 
         //
-        // GET: /User/Create
+        // GET: /Address/Create
 
-        public ActionResult Create(BusinessModel.User user)
+        public ActionResult Create()
         {
-            BusinessServices.UserService.InsertUser(user);
             return View();
         }
 
         //
-        // POST: /User/Create
+        // POST: /Address/Create
 
         [HttpPost]
         public ActionResult Create(FormCollection collection)
@@ -52,7 +51,7 @@ namespace MvcPersonnalTest.Controllers
         }
 
         //
-        // GET: /User/Edit/5
+        // GET: /Address/Edit/5
 
         public ActionResult Edit(int id)
         {
@@ -60,7 +59,7 @@ namespace MvcPersonnalTest.Controllers
         }
 
         //
-        // POST: /User/Edit/5
+        // POST: /Address/Edit/5
 
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
@@ -68,6 +67,32 @@ namespace MvcPersonnalTest.Controllers
             try
             {
                 // TODO: Add update logic here
+
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        //
+        // GET: /Address/Delete/5
+
+        public ActionResult Delete(int id)
+        {
+            return View();
+        }
+
+        //
+        // POST: /Address/Delete/5
+
+        [HttpPost]
+        public ActionResult Delete(int id, FormCollection collection)
+        {
+            try
+            {
+                // TODO: Add delete logic here
 
                 return RedirectToAction("Index");
             }
