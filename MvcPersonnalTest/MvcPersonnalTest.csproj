@@ -125,6 +125,7 @@
     <Compile Include="Controllers\BootstrapController.cs" />
     <Compile Include="Controllers\JQueryController.cs" />
     <Compile Include="Controllers\RazorController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -223,6 +224,10 @@
     <Content Include="Views\JQuery\Index.cshtml" />
     <Content Include="Views\Razor\Index.cshtml" />
     <Content Include="Views\Razor\Success.cshtml" />
+    <Content Include="Views\User\Index.cshtml" />
+    <Content Include="Views\User\Create.cshtml" />
+    <Content Include="Views\User\Edit.cshtml" />
+    <Content Include="Views\User\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
