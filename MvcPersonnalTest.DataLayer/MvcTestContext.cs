@@ -13,32 +13,22 @@ namespace MvcPersonnalTest.DataLayer
         public MvcTestContext()
             : base("name=MvcTestEntities", "MvcTestEntities")
         {
-            _addresses = CreateObjectSet<Address>();
-            _users = CreateObjectSet<User>();
+            ContextOptions.LazyLoadingEnabled = true;
         }
-
+        
+        private ObjectSet<User> _users;
         public ObjectSet<User> Users
         {
-            get
-            {
-                return _users;
-            }
+            get { return _users ?? (_users = CreateObjectSet<User>()); }
         }
-
-        private ObjectSet<User> _users;
-
+        
+        private ObjectSet<Address> _addresses;
         public ObjectSet<Address> Addresses
         {
             get
             {
-                return _addresses;
+                return _addresses ?? (_addresses = CreateObjectSet<Address>());
             }
         }
-
-        private ObjectSet<Address> _addresses;
-
     }
-
-
-  
 }

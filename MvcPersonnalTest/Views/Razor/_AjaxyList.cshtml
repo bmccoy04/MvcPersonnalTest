@@ -1,0 +1,10 @@
+﻿@model MvcPersonnalTest.Models.AjaxyList
+
+AjazyList
+
+@foreach (var u in Model.Users)
+{
+    <div>
+        @Html.DisplayFor(item => u.FirstName )
+    </div>
+}

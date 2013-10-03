@@ -40,5 +40,20 @@ namespace MvcPersonnalTest.Controllers
             return View(SUCCESS);
         }
 
+        public ActionResult AjaxyList()
+        {
+            return View();
+        }
+
+        public PartialViewResult _AjaxyList()
+        {
+            var model = new Models.AjaxyList();
+            model.Users = new List<User>();
+
+            model.Users.Add(new User(){FirstName = "Bryan", LastName = "McCoy"});
+
+            return PartialView("_AjaxyList", model);
+        }
+
     }
 }
