@@ -6,11 +6,14 @@
 <div onclick="ToggleAlert();" style="cursor: pointer">Toggle Alert</div>
 <div class="alert alert-success">This was shown w/ jquery</div>
 
+
+
 @section scripts
 {
     <script type="text/javascript">
         $(document).ready(function() {
             $('.alert').hide();
+            $('#example').dataTable();
         });
 
         function ToggleAlert() {

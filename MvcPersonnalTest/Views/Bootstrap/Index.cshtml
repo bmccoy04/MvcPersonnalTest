@@ -20,12 +20,30 @@
 <div>
     This is a header
 </div>
-
+<div>
+    @Html.ValidationSummary(false,"",new { @class="alert alert-danger"})
+</div>
+<div class="container">
+    <div style="width: 330px; margin: auto;">
+        @using(Html.BeginForm("Index", "Bootstrap", FormMethod.Post))
+        {
+            <h2>Please sign in</h2>
+            @Html.TextBox("Username", "", new {@class = "form-control", @placeholder = "Username"})
+            
+            @Html.Password("Password", "", new {@class = "form-control", @placeholder = "Password"})
+            <br/>
+            <input type="submit" class="btn btn-lg btn-primary btn-block" value="Sign In" />
+        }
+    </div>    
+</div>
+<br/>
+<br>
 <div class="jumbotron">
     <div class="container">
         <button type="button" class="btn btn-default" data-toggle="modal" onclick="$('#myModal').modal('show');">Test Button</button>
         <a class="btn btn-default btn-lg" data-toggle="modal" href="#myModal">Test Link Button</a>
-        <button type="button" class="btn btn-default" onclick="showModalDialog('test');">Dialog</button>
+        <button type="button" class="btn btn-default" onclick="showModalDialog('test');">Dialog</button>        
+
     </div>
 </div>
 

@@ -16,5 +16,13 @@ namespace MvcPersonnalTest.Controllers
             return View();
         }
 
+        [HttpPost]
+        public ActionResult Index(FormCollection collection)
+        {
+            ModelState.AddModelError(string.Empty, "The user name or password provided is incorrect.");
+            ModelState.AddModelError(string.Empty,"Test second meessge.");
+            return View();
+        }
+
     }
 }
